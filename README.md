@@ -31,7 +31,8 @@ Providing Redirect URL is not needed for Client Credentials flow.
 Provided that you obtained the API credentials and bootstrap some Go application let's initialize the SDK:
 
 ```go
-c := monerium.NewClient(context.Background(),
+c := monerium.NewClient(
+	context.Background(),
 	SandboxBaseURL,
 	SandboxWebsocketURL,
 	&monerium.AuthConfig{
@@ -45,12 +46,12 @@ The SDK provides helpful constants for Sandbox and Production URLs.
 
 Next, we'll confirm that the connection works by getting AuthContext, to get information about authenticated user (yes, that's you!).
 
-```
-	ac, err := c.GetAuthContext(context.Background())
-	if err != nil {
-		log.Fatal(err)
-	}
-	fmt.Println("Your default Profile ID is: ", ac.DefaultProfileID)
+```go
+ac, err := c.GetAuthContext(context.Background())
+if err != nil {
+	log.Fatal(err)
+}
+fmt.Println("Your default Profile ID is: ", ac.DefaultProfileID)
 ```
 
 What you just got in the response is the ID of the default profile associated with your account.   
