@@ -76,10 +76,12 @@ import (
 
 // ...
 
-msg := "Send EUR 1 to GR1601101250000000012300695 at " + time.Now().Format(time.RFC3339)
-pk := privateKeyFrom(privateKeyStr)
-sig := signatureFrom(msg, pk)
-addr := "0x123" // address associated with private key
+var (
+    msg  = "Send EUR 1 to GR1601101250000000012300695 at " + time.Now().Format(time.RFC3339)
+    pk   = privateKeyFrom(privateKeyStr)
+    sig  = signatureFrom(msg, pk)
+    addr = "0x123" // address associated with private key
+)
 
 // ...
 
@@ -88,7 +90,7 @@ func privateKeyFrom(s string) (*ecdsa.PrivateKey, error) {
     if err != nil {
         return nil, err
     }
-    
+	
 	return crypto.ToECDSAUnsafe(bs), nil
 }
 
@@ -97,7 +99,7 @@ func signatureFrom(msg string, pk *ecdsa.PrivateKey) (string, error) {
 	hash := crypto.Keccak256Hash([]byte(data))
 	signature, err := crypto.Sign(hash.Bytes(), pk)
 	if err != nil {
-        return nil, err
+		return nil, err
 	}
 
 	return hexutil.Encode(signature)
