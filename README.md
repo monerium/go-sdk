@@ -8,7 +8,7 @@ Monerium's go-sdk is compatible with standard Go modules workflow.
 To install:
 
 ```
-go get github.com/monerum/go-sdk
+go get github.com/monerium/go-sdk
 ```
 
 ## Usage
