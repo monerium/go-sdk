@@ -33,8 +33,8 @@ Provided that you obtained the API credentials and bootstrap some Go application
 ```go
 c := monerium.NewClient(
 	context.Background(),
-    monerium.SandboxBaseURL,
-    monerium.SandboxWebsocketURL,
+	monerium.SandboxBaseURL,
+	monerium.SandboxWebsocketURL,
 	&monerium.AuthConfig{
 		ClientID:     clientID,
 		ClientSecret: clientSecret,
